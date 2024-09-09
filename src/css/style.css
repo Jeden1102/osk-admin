@@ -15,9 +15,9 @@
     --card-foreground: 222.2 84% 4.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
-    --primary: #264653;
+    --primary: 197 37% 24%;
     --primary-foreground: 210 40% 98%;
-    --secondary: #2a9d8f;
+    --secondary: 173 58% 39%;
     --secondary-foreground: 222.2 47.4% 11.2%;
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
@@ -43,9 +43,9 @@
     --card-foreground: 210 40% 98%;
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
-    --primary: #264653;
+    --primary: 197 37% 24%;
     --primary-foreground: white;
-    --secondary: #2a9d8f;
+    --secondary: 173 58% 39%;
     --secondary-foreground: 210 40% 98%;
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
@@ -79,11 +79,11 @@
   }
 
   .chat-height {
-    @apply lg:h-[calc(100vh_-_5.625rem)] h-[calc(100vh_-_8.125rem)];
+    @apply h-[calc(100vh_-_8.125rem)] lg:h-[calc(100vh_-_5.625rem)];
   }
 
   .inbox-height {
-    @apply lg:h-[calc(100vh_-_5.625rem)] h-[calc(100vh_-_8.125rem)];
+    @apply h-[calc(100vh_-_8.125rem)] lg:h-[calc(100vh_-_5.625rem)];
   }
 }
 

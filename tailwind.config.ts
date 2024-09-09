@@ -31,11 +31,11 @@ const config: Config = {
         bodydark1: "#DEE4EE",
         bodydark2: "#8A99AF",
         primary: {
-          DEFAULT: "var(--primary)",
+          DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {
-          DEFAULT: "var(--secondary)",
+          DEFAULT: "hsl(var(--secondary))",
           foreground: "white",
         },
         destructive: {
