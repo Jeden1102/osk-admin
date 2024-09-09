@@ -1,31 +1,55 @@
-"use client";
 import "jsvectormap/dist/jsvectormap.css";
 import "flatpickr/dist/flatpickr.min.css";
 import "@/css/satoshi.css";
 import "@/css/style.css";
-import React, { useEffect, useState } from "react";
-import Loader from "@/components/common/Loader";
+
+import type { Metadata, Viewport } from "next";
+
+const APP_NAME = "PWA App";
+const APP_DEFAULT_TITLE = "My Awesome PWA App";
+const APP_TITLE_TEMPLATE = "%s - PWA App";
+const APP_DESCRIPTION = "Best PWA app in the world!";
+
+export const metadata: Metadata = {
+  applicationName: APP_NAME,
+  title: {
+    default: APP_DEFAULT_TITLE,
+    template: APP_TITLE_TEMPLATE,
+  },
+  description: APP_DESCRIPTION,
+  manifest: "/manifest.json",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "default",
+    title: APP_DEFAULT_TITLE,
+  },
+  formatDetection: {
+    telephone: false,
+  },
+  openGraph: {
+    type: "website",
+    siteName: APP_NAME,
+    title: {
+      default: APP_DEFAULT_TITLE,
+      template: APP_TITLE_TEMPLATE,
+    },
+    description: APP_DESCRIPTION,
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#FFFFFF",
+};
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [loading, setLoading] = useState<boolean>(true);
-
-  // const pathname = usePathname();
-
-  useEffect(() => {
-    setTimeout(() => setLoading(false), 1000);
-  }, []);
-
   return (
     <html lang="en">
       <body suppressHydrationWarning={true}>
-        <div className="dark:bg-boxdark-2 dark:text-bodydark">
-          {loading ? <Loader /> : children}
-        </div>
+        <div className="dark:bg-boxdark-2 dark:text-bodydark">{children}</div>
       </body>
     </html>
   );
