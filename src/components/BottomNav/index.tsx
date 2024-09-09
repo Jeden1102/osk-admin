@@ -9,6 +9,7 @@ import {
   IoAddCircleOutline,
 } from "react-icons/io5";
 import { LuUser } from "react-icons/lu";
+import { cn } from "@/lib/utils";
 
 const menu = [
   {
@@ -20,13 +21,13 @@ const menu = [
   {
     icon: <IoCalendarOutline />,
     label: "Calendar",
-    route: "/",
+    route: "/calendar",
     roles: ["admin", "instructor", "student"],
   },
   {
     icon: <IoAddCircleOutline />,
     label: "Book",
-    route: "/",
+    route: "/book",
     roles: ["admin", "instructor", "student"],
   },
   {
@@ -38,20 +39,32 @@ const menu = [
 ];
 
 const BottomNav = () => {
+  const pathName = usePathname();
   return (
     <nav className="h-full w-full md:hidden">
-      <div className="fixed bottom-0 left-0 z-50 w-full rounded-t-2xl border border-stroke bg-white/60 px-7 shadow-default backdrop-blur">
+      <div className="fixed bottom-0 left-0 z-50 w-full rounded-t-2xl border border-stroke bg-white/60 shadow-default backdrop-blur">
         <div className="flex">
           {menu.map((menuItem) => (
             <div className="group flex-1">
               <Link
                 href={menuItem.route}
-                className="text-gray-400 text-primary/80 mx-auto flex w-full items-end  justify-center px-4 pt-2 text-center group-hover:text-secondary"
+                className={cn(
+                  "text-gray-400 text-primary/80 mx-auto flex w-full items-end  justify-center pt-2 text-center group-hover:text-secondary",
+                  {
+                    "bg-secondary/5 text-secondary":
+                      pathName === menuItem.route,
+                  },
+                )}
               >
                 <span className="flex flex-col items-center px-1 pb-1 pt-1">
                   <span className="text-xl">{menuItem.icon}</span>
                   <span className="block pb-2">{menuItem.label}</span>
-                  <span className="mx-auto block h-1 w-5 rounded-full group-hover:bg-secondary"></span>
+                  <span
+                    className={cn(
+                      "mx-auto block h-1 w-5 rounded-full group-hover:bg-secondary",
+                      { "bg-secondary": pathName === menuItem.route },
+                    )}
+                  ></span>
                 </span>
               </Link>
             </div>
