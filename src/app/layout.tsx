@@ -4,6 +4,7 @@ import "@/css/satoshi.css";
 import "@/css/style.css";
 
 import type { Metadata, Viewport } from "next";
+import { CookiesProvider } from "next-client-cookies/server";
 
 const APP_NAME = "PWA App";
 const APP_DEFAULT_TITLE = "My Awesome PWA App";
@@ -49,7 +50,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body suppressHydrationWarning={true}>
-        <div className="dark:bg-boxdark-2 dark:text-bodydark">{children}</div>
+        <div className="dark:bg-boxdark-2 dark:text-bodydark">
+          <CookiesProvider>{children}</CookiesProvider>
+        </div>
       </body>
     </html>
   );

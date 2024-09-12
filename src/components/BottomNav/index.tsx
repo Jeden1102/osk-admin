@@ -10,6 +10,7 @@ import {
 } from "react-icons/io5";
 import { LuUser } from "react-icons/lu";
 import { cn } from "@/lib/utils";
+import { useCookies } from "next-client-cookies";
 
 const menu = [
   {
@@ -39,17 +40,37 @@ const menu = [
 ];
 
 const BottomNav = () => {
+  const cookies = useCookies();
   const pathName = usePathname();
+
+  const menuTabs = menu.map((item) => item.route);
+
+  const [activeHistory, setActiveHistory] = useState<number[]>([]);
+
+  const [activeTab, setActiveTab] = useState<number>(() => {
+    const activeTabValue = cookies.get("active-tab");
+    return parseInt(activeTabValue ?? "0", 10);
+  });
+
+  useEffect(() => {
+    cookies.set("active-tab", menuTabs.indexOf(pathName).toString());
+    setActiveTab(menuTabs.indexOf(pathName));
+  }, []);
+
+  useEffect(() => {
+    setActiveHistory([...activeHistory, activeTab]);
+    console.log(activeHistory);
+  }, [activeTab]);
   return (
     <nav className="h-full w-full md:hidden">
       <div className="fixed bottom-0 left-0 z-50 w-full rounded-t-2xl border border-stroke bg-white/60 shadow-default backdrop-blur">
-        <div className="flex">
+        <div className="relative flex">
           {menu.map((menuItem) => (
             <div className="group flex-1">
               <Link
                 href={menuItem.route}
                 className={cn(
-                  "text-gray-400 text-primary/80 mx-auto flex w-full items-end  justify-center pt-2 text-center group-hover:text-secondary",
+                  "text-gray-400 mx-auto flex w-full items-end justify-center  pt-2 text-center text-primary/80 group-hover:text-secondary",
                   {
                     "bg-secondary/5 text-secondary":
                       pathName === menuItem.route,
@@ -59,17 +80,18 @@ const BottomNav = () => {
                 <span className="flex flex-col items-center px-1 pb-1 pt-1">
                   <span className="text-xl">{menuItem.icon}</span>
                   <span className="block pb-2">{menuItem.label}</span>
-                  <span
-                    className={cn(
-                      "mx-auto block h-1 w-5 rounded-full group-hover:bg-secondary",
-                      { "bg-secondary": pathName === menuItem.route },
-                    )}
-                  ></span>
                 </span>
               </Link>
             </div>
           ))}
         </div>
+
+        <span
+          style={{
+            left: `${activeTab * 25}vw`,
+          }}
+          className="absolute bottom-1 left-0 h-1 w-1/4 bg-secondary transition-all duration-500"
+        ></span>
       </div>
     </nav>
   );
