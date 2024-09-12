@@ -63,14 +63,14 @@ const BottomNav = () => {
   }, [activeTab]);
   return (
     <nav className="h-full w-full md:hidden">
-      <div className="fixed bottom-0 left-0 z-50 w-full rounded-t-2xl border border-stroke bg-white/60 shadow-default backdrop-blur">
+      <div className="fixed bottom-0 left-0 z-50 w-full rounded-t-2xl border border-stroke bg-white/60 shadow-default backdrop-blur dark:border-graydark dark:bg-black">
         <div className="relative flex">
           {menu.map((menuItem) => (
             <div className="group flex-1">
               <Link
                 href={menuItem.route}
                 className={cn(
-                  "text-gray-400 mx-auto flex w-full items-end justify-center  pt-2 text-center text-primary/80 group-hover:text-secondary",
+                  "text-gray-400 mx-auto flex w-full items-end justify-center  pt-2 text-center text-secondary/90 group-hover:text-secondary",
                   {
                     "bg-secondary/5 text-secondary":
                       pathName === menuItem.route,
@@ -79,7 +79,9 @@ const BottomNav = () => {
               >
                 <span className="flex flex-col items-center px-1 pb-1 pt-1">
                   <span className="text-xl">{menuItem.icon}</span>
-                  <span className="block pb-2">{menuItem.label}</span>
+                  <span className="block pb-2 dark:font-bold">
+                    {menuItem.label}
+                  </span>
                 </span>
               </Link>
             </div>

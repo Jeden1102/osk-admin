@@ -1,4 +1,2 @@
 1. For student/instructor scrollable tabs - incoming lessons.
-2. Smoothly active page for mobile nav.
-3. Add dark mode for bottom nav
 
