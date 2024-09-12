@@ -16,7 +16,6 @@ const Base: React.FC = () => {
   return (
     <>
       <div className="mx-auto max-w-270">
-        <Breadcrumb pageName="Home" />
         <div className="mb-6 flex flex-col justify-between gap-2 sm:flex-row">
           <div>
             <h1 className="text-3xl font-semibold">Hello, Dominik</h1>
