@@ -70,7 +70,7 @@ const BottomNav = () => {
               <Link
                 href={menuItem.route}
                 className={cn(
-                  "text-gray-400 mx-auto flex w-full items-end justify-center  pt-2 text-center text-secondary/90 group-hover:text-secondary",
+                  "text-gray-400 mx-auto flex w-full items-end justify-center  pt-2 text-center text-primary/90 group-hover:text-secondary dark:text-secondary/90",
                   {
                     "bg-secondary/5 text-secondary":
                       pathName === menuItem.route,

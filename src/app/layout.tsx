@@ -2,6 +2,7 @@ import "jsvectormap/dist/jsvectormap.css";
 import "flatpickr/dist/flatpickr.min.css";
 import "@/css/satoshi.css";
 import "@/css/style.css";
+import NextTopLoader from "nextjs-toploader";
 
 import type { Metadata, Viewport } from "next";
 import { CookiesProvider } from "next-client-cookies/server";
@@ -50,6 +51,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body suppressHydrationWarning={true}>
+        <NextTopLoader height={4} color="#2a9d8f" showSpinner={false} />
         <div className="dark:bg-boxdark-2 dark:text-bodydark">
           <CookiesProvider>{children}</CookiesProvider>
         </div>
