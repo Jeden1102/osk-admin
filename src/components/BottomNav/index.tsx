@@ -92,7 +92,7 @@ const BottomNav = () => {
           style={{
             left: `${activeTab * 25}vw`,
           }}
-          className="absolute bottom-1 left-0 h-1 w-1/4 bg-secondary transition-all duration-500"
+          className="absolute top-0 left-0 h-1 w-1/4 bg-secondary transition-all duration-500"
         ></span>
       </div>
     </nav>
