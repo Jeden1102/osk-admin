@@ -8,9 +8,9 @@ import { MdCancel } from "react-icons/md";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { PiStudentFill } from "react-icons/pi";
 import { FaCar } from "react-icons/fa";
-
 import Link from "next/link";
 import { Button } from "../ui/button";
+import { CardDataIncomingLesson } from "../CardDataIncomingLesson";
 
 const Base: React.FC = () => {
   return (
@@ -63,24 +63,57 @@ const Base: React.FC = () => {
             </AlertDescription>
           </Alert>
         </section>
-        <section className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-4 2xl:gap-7.5">
-          <CardDataStats
-            title="Driving lessons hours completed"
-            total="20"
-            rate="60%"
-            completed
-          >
-            <FaRegClock />
-          </CardDataStats>
-          <CardDataStats title="Days to next lesson" total="3">
-            <FaRegClock />
-          </CardDataStats>
-          <CardDataStats title="Students assigned to you" total="24">
-            <PiStudentFill />
-          </CardDataStats>
-          <CardDataStats title="Driving lessons next week" total="24">
-            <FaCar />
-          </CardDataStats>
+        <section className="my-4 -mr-3 flex flex-col gap-2 pr-3">
+          <h2 className="text-2xl font-semibold">Incoming lessons</h2>
+          <div className="flex max-w-full gap-4 overflow-x-auto">
+            <div className="flex gap-4">
+              <CardDataIncomingLesson
+                title="Driving lesson"
+                description="Driving lesson incoming"
+                date="12th May, 12:45"
+                day="Monday"
+                target="student"
+              />
+              <CardDataIncomingLesson
+                title="Driving lesson"
+                description="Driving lesson incoming"
+                date="13th May, 10:45"
+                day="Thuesday"
+                target="student"
+              />
+              <CardDataIncomingLesson
+                title="Driving lesson"
+                description="Driving lesson incoming"
+                date="15th May, 9:00"
+                day="Friday"
+                target="student"
+              />
+            </div>
+          </div>
+        </section>
+
+        <section className="flex flex-col gap-2">
+          <h2 className="text-2xl font-semibold">Stats</h2>
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-4 2xl:gap-7.5">
+            <CardDataStats
+              title="Driving lessons hours completed"
+              total="20"
+              rate="60%"
+              completed
+            >
+              <FaRegClock />
+            </CardDataStats>
+
+            <CardDataStats title="Days to next lesson" total="3">
+              <FaRegClock />
+            </CardDataStats>
+            <CardDataStats title="Students assigned to you" total="24">
+              <PiStudentFill />
+            </CardDataStats>
+            <CardDataStats title="Driving lessons next week" total="24">
+              <FaCar />
+            </CardDataStats>
+          </div>
         </section>
       </div>
     </>
