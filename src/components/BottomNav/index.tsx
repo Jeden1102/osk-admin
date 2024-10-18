@@ -66,7 +66,7 @@ const BottomNav = () => {
       <div className="fixed bottom-0 left-0 z-50 w-full rounded-t-2xl border border-stroke bg-white/60 shadow-default backdrop-blur dark:border-graydark dark:bg-black">
         <div className="relative flex">
           {menu.map((menuItem) => (
-            <div className="group flex-1">
+            <div key={menuItem.label} className="group flex-1">
               <Link
                 href={menuItem.route}
                 className={cn(
@@ -92,7 +92,7 @@ const BottomNav = () => {
           style={{
             left: `${activeTab * 25}vw`,
           }}
-          className="absolute top-0 left-0 h-1 w-1/4 bg-secondary transition-all duration-500"
+          className="absolute left-0 top-0 h-1 w-1/4 bg-secondary transition-all duration-500"
         ></span>
       </div>
     </nav>
